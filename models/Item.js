@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'); //bring in mongoose
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 //create Schema (the fields that we want)
 const ItemSchema = new Schema({

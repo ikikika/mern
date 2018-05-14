@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser"); //take request and get data from body
 
+const items = require('./routes/api/items'); // bring in item api route
+
 //initialise express
 const app = express();
 
@@ -19,6 +21,9 @@ mongoose.connect(db)
   .catch(
     err => console.log(err)
   );
+
+// use routes
+  app.use('/api/items', items); //anything that goes to /api/items will go to the items const which will refer to the file routes/api/items
 
 const port = process.env.port || 5000;
 
