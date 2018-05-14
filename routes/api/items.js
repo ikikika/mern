@@ -14,4 +14,15 @@ router.get('/', (req, res) => { //the first slash already refer to means the end
     .then( items => res.json(items) );
 });
 
+//@route post api/items
+// @desc create a post
+// @access Public
+router.post('/', (req, res) => {
+  const newItem = new Item({
+    name: req.body.name
+  });
+  newItem.save()
+    .then( item => res.json(item) );
+});
+
 module.exports = router;
