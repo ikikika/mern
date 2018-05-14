@@ -15,7 +15,7 @@ router.get('/', (req, res) => { //the first slash already refer to means the end
 });
 
 //@route post api/items
-// @desc create a post
+// @desc create an item
 // @access Public
 router.post('/', (req, res) => {
   const newItem = new Item({
@@ -23,6 +23,15 @@ router.post('/', (req, res) => {
   });
   newItem.save()
     .then( item => res.json(item) );
+});
+
+//@route DELETE api/items/:id
+// @desc delete an item
+// @access Public
+router.delete('/:id', (req, res) => {
+  Item.findById(req.params.id)
+    .then( item =>item.remove().then( () => res.json({success: true})) )
+    .catch( err => res.status(404).json({ success: false}) );
 });
 
 module.exports = router;
