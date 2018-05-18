@@ -8,8 +8,12 @@ import PropTypes from 'prop-types';
 
 class List extends Component {
 
+  componentDidMount() { //run when component mount, eg when making api request, running an action
+    this.props.getItems();
+  }
+
   render(){
-    const { items } = this.state;
+    const { items } = this.props.item;
     return(
       <Container>
         <Button
@@ -49,6 +53,11 @@ class List extends Component {
       </Container>
     );
   }
+}
+
+List.PropTypes = {
+  getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({

@@ -16,7 +16,7 @@ class App extends Component {
           <AppNavbar />
           <List />
         </div>
-      </Provider>  
+      </Provider>
     );
   }
 }
