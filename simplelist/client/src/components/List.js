@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuid from 'uuid';
+import { connect } from 'react-redux'; //get state from redux into component
+import { getItems } from '../actions/itemActions';
+import PropTypes from 'prop-types';
 
 class List extends Component {
-  state = {
-    items: [
-      { id: uuid(), name: "Eggs"},
-      { id: uuid(), name: "Milk"},
-      { id: uuid(), name: "Bread"},
-      { id: uuid(), name: "Water"}
-    ]
-  }
 
   render(){
     const { items } = this.state;
@@ -56,4 +51,9 @@ class List extends Component {
   }
 }
 
-export default List;
+const mapStateToProps = (state) => ({
+  item: state.item
+});
+
+export default connect(mapStateToProps, { getItems })(List);
+//mapStateToProps allows us to take our item state, map state into component properties eg this.prop.items
