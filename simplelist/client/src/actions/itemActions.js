@@ -6,3 +6,10 @@ export const getItems = () => {
     type: GET_ITEMS //this is the action
   };
 };
+
+export const deleteItem = (id) => {
+  return {
+    type: DELETE_ITEM, //this is the action
+    payload: id
+  };
+};
