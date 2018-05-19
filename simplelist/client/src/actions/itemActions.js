@@ -13,3 +13,10 @@ export const deleteItem = (id) => {
     payload: id
   };
 };
+
+export const addItem = (item) => {
+  return {
+    type: ADD_ITEM, //this is the action
+    payload: item
+  };
+};
