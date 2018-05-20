@@ -17,7 +17,7 @@ export default function( state = initialState, action){ //action is from itemAct
     case DELETE_ITEM:
       return {
         ...state,
-        items: state.items.filter(item => item.id !== action.payload)
+        items: state.items.filter(item => item._id !== action.payload)
       };
     case ADD_ITEM:
       return {
