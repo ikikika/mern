@@ -14,6 +14,17 @@ export const getItems = () => dispatch => { //using thunk to use dispathcer for 
     )
 };
 
+export const addItem = (item) => dispatch => {
+  axios
+    .post('/api/items', item)
+    .then(res =>
+      dispatch({
+        type: ADD_ITEM,
+        payload: res.data
+      })
+    )
+};
+
 export const deleteItem = (id) => {
   return {
     type: DELETE_ITEM, //this is the action
@@ -21,12 +32,7 @@ export const deleteItem = (id) => {
   };
 };
 
-export const addItem = (item) => {
-  return {
-    type: ADD_ITEM, //this is the action
-    payload: item
-  };
-};
+
 
 export const setItemsLoading = () => {
   return {
