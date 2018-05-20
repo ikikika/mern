@@ -10,7 +10,9 @@ export default function( state = initialState, action){ //action is from itemAct
   switch(action.type){
     case GET_ITEMS :
       return {
-        ...state
+        ...state,
+        items: action.payload,
+        loading: false
       };
     case DELETE_ITEM:
       return {
