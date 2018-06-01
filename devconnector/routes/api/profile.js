@@ -24,6 +24,7 @@ router.get('/test', (req, res) => res.json({msg: "profile work"})); //this will 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
 const errors = {};
   Profile.findOne({ user: req.user.id })
+    .populate('user', ['name', 'avatar'])
     .then( profile => {
       if(!profile){
         errors.noprofile = "there is no profile for this user";
