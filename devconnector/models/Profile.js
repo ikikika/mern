@@ -37,12 +37,10 @@ const ProfileSchema = new Schema({
   },
   experience: {
     title: {
-      type: String,
-      required: true
+      type: String
     },
     company: {
-      type: String,
-      required: true
+      type: String
     },
     location: {
       type: String
@@ -64,19 +62,16 @@ const ProfileSchema = new Schema({
   },
   education: {
     school: {
-      type: String,
-      required: true
+      type: String
     },
     degree: {
-      type: String,
-      required: true
+      type: String
     },
     fieldofstudy: {
       type: String
     },
     from: {
-      type: Date,
-      required: true
+      type: Date
     },
     from: {
       type: Date
