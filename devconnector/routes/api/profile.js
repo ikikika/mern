@@ -71,7 +71,7 @@ router.post('/', passport.authenticate('jwt', { session: false }),
             .then( profile => res.json(profile) )
           } else {
             // create
-            //check if hangle exist
+            //check if handle exist
             Profile.findOne({handle: profileFields.handle})
               .then(profile => {
                 if(profile){
