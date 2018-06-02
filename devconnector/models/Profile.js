@@ -35,55 +35,61 @@ const ProfileSchema = new Schema({
   githubusername: {
     type: String
   },
-  experience: {
-    title: {
-      type: String
-    },
-    company: {
-      type: String
-    },
-    location: {
-      type: String
-    },
-    from: {
-      type: Date,
-      required: true
-    },
-    from: {
-      type: Date
-    },
-    current: {
-      type: Boolean,
-      default: false
-    },
-    description: {
-      type: String
+  experience: [
+    {
+      title: {
+        type: String,
+        required: true
+      },
+      company: {
+        type: String,
+        required: true
+      },
+      location: {
+        type: String
+      },
+      from: {
+        type: Date,
+        required: true
+      },
+      to: {
+        type: Date
+      },
+      current: {
+        type: Boolean,
+        default: false
+      },
+      description: {
+        type: String
+      }
     }
-  },
-  education: {
-    school: {
-      type: String
-    },
-    degree: {
-      type: String
-    },
-    fieldofstudy: {
-      type: String
-    },
-    from: {
-      type: Date
-    },
-    from: {
-      type: Date
-    },
-    current: {
-      type: Boolean,
-      default: false
-    },
-    description: {
-      type: String
+  ],
+  education: [
+    {
+      school: {
+        type: String
+      },
+      degree: {
+        type: String
+      },
+      fieldofstudy: {
+        type: String
+      },
+      from: {
+        type: Date
+      },
+      from: {
+        type: Date
+      },
+      current: {
+        type: Boolean,
+        default: false
+      },
+      description: {
+        type: String
+      }
     }
-  },
+  ],
   social: {
     youtube: {
       type: String

@@ -5,6 +5,7 @@ const passport = require('passport');
 
 //load profile validation
 const validateProfileInput = require('../../validation/profile');
+const validateExpInput = require('../../validation/experience');
 
 //load profile model
 const Profile = require('../../models/Profile');
@@ -103,8 +104,17 @@ router.post('/', passport.authenticate('jwt', { session: false }),
 // @access  Private
 
 router.post('/experience', passport.authenticate('jwt', {session:false}), (req, res) => {
-  Profile.findOne({ user: req.user.id})
-    .then(profile => {
+
+  const { errors, isValid } = validateExpInput(req.body);
+
+  // check validation
+  if( !isValid ){
+    // return any errors with 400 Status
+    return res.status(400).json(errors);
+  }
+
+  Profile.findOne( {user: req.user.id} )
+    .then( profile => {
       const newExp = {
         title: req.body.title,
         company: req.body.company,
@@ -112,12 +122,13 @@ router.post('/experience', passport.authenticate('jwt', {session:false}), (req, 
         from: req.body.from,
         to: req.body.to,
         current: req.body.current,
-        description: req.bpdy.description
+        description: req.body.description
       }
-      //add to experience array
-      profile.experience.unshift(newExp);
-      profile.save()
-        .then(profile=> res.json(profile));
+      // //add to experience array
+      profile.experience.unshift( newExp );
+      profile.save().then( profile=> res.json(profile) );
+
+      
     });
 });
 
