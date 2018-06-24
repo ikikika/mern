@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
@@ -42,6 +43,8 @@ class Register extends Component {
 
   render() {
     const {errors} = this.state; //{} pull the errors value out of this.state object
+
+    const {user} = this.props.auth;
 
     return (
       <div className="register">
@@ -113,4 +116,13 @@ class Register extends Component {
   }
 }
 
-export default connect(null, {registeruser})(Register);
+Register.propTypes = {
+  registeruser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state)=>({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, {registeruser})(Register);
