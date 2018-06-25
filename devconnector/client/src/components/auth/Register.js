@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { registeruser } from '../../actions/authActions';
@@ -20,7 +19,7 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentWIllReceiveProps( nextProps ){
+  componentWillReceiveProps( nextProps ){
     if( nextProps.errors ){
       this.setState({errors: nextProps.errors});
     }
