@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode';
 
 
 import { GET_ERRORS } from './types';
+import { SET_CURRENT_USER } from './types';
 
 //register user
 export const registeruser = (userData, history) => dispatch => {
@@ -37,7 +38,8 @@ export const loginUser = (userData) => dispatch => {
   })
   .catch(err=>
     dispatch({
-
+      type: GET_ERRORS,
+      payload: err.response.data
     })
   )
 };
