@@ -27,13 +27,15 @@ class Dashboard extends Component {
         dashboardContent = <h4>Display Profile</h4>
       } else {
         //user logged in not no profile
-        <div>
-          <p className="lead text-muted">WElcome { user.name }</p>
-          <p>You have not set up a profile, please add some info.</p>
-          <Link to="/create-profile" className="btn btn-lg btn-info">
-            Create Profile
-          </Link>
-        </div>
+        dashboardContent = (
+          <div>
+            <p className="lead text-muted">WElcome { user.name }</p>
+            <p>You have not set up a profile, please add some info.</p>
+            <Link to="/create-profile" className="btn btn-lg btn-info">
+              Create Profile
+            </Link>
+          </div>
+        );
       }
     }
 
