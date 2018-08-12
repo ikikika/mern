@@ -6,7 +6,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
 import SelectListGroup from '../common/SelectListGroup';
-import { createProfile } from '../../actions/profileActions';
+import { createProfile, getCurrentProfile } from '../../actions/profileActions';
 
 class CreateProfile extends Component {
 
@@ -32,6 +32,10 @@ class CreateProfile extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getCurrentProfile();
   }
 
   componentWillReceiveProps(nextProps){
@@ -141,7 +145,7 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create Your Profile</h1>
+              <h1 className="display-4 text-center">Edit Your Profile</h1>
               <p className="lead text-center">
                 Please fill out the profile form
               </p>
@@ -246,6 +250,8 @@ class CreateProfile extends Component {
 };
 
 CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -255,6 +261,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { createProfile })(
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
   withRouter(CreateProfile)
 );
