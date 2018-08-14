@@ -21,10 +21,38 @@ class AddExperience extends Component {
       disabled: false
     };
 
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onCheck = this.onCheck.bind(this);
 
   }
 
+  onSubmit(e) {
+    e.preventDefault();
 
+    const expData = {
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
+      from: this.state.from,
+      to: this.state.to,
+      current: this.state.current,
+      description: this.state.description
+    };
+
+    this.props.addExperience(expData, this.props.history);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onCheck(e) {
+    this.setState({
+      disabled: !this.state.disabled,
+      current: !this.state.current
+    });
+  }
 
   render() {
     const { errors } = this.state;
