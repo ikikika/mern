@@ -42,7 +42,7 @@ const seed = async () => {
       polls.map(async poll => {
         poll.options = poll.options.map(option => ({ option, votes: 0 }));
         const data = await db.Poll.create(poll);
-        const user = await db.User.findOne({ username: "username" });
+        const user = await db.User.findOne({ username: "user1" });
         data.user = user;
         user.polls.push(data._id);
         await user.save();
