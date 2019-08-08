@@ -2,7 +2,7 @@ const db = require("../models");
 
 exports.showPolls = async (req, res, next) => {
   try {
-    const polls = await db.Poll.find();
+    const polls = await db.Poll.find().populate("user", ["username", "id"]);
     return res.status(200).json(polls);
   } catch (err) {
     err.status = 400;
@@ -57,6 +57,27 @@ exports.getPoll = async (req, res, next) => {
     if (!poll) throw new Error("No poll found");
 
     return res.status(200).json(poll);
+  } catch (err) {
+    err.status = 400;
+    next(err);
+  }
+};
+
+exports.deletePoll = async (req, res, next) => {
+  try {
+    const { id: pollId } = req.params;
+    const { id: userId } = req.decoded;
+
+    const poll = await db.Poll.findById(pollId);
+
+    if (!poll) throw new Error("No poll found");
+    if (poll.user.toString() !== userId) {
+      throw new Error("Unauthroised access");
+    }
+
+    await poll.remove();
+
+    return res.status(202).json(poll);
   } catch (err) {
     err.status = 400;
     next(err);

@@ -14,6 +14,6 @@ router
   .route("/:id")
   .get(handle.getPoll)
   .post()
-  .delete();
+  .delete(auth, handle.deletePoll);
 
 module.exports = router;
