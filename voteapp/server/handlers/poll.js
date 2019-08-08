@@ -44,3 +44,21 @@ exports.createPoll = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getPoll = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const poll = await db.Poll.findById(id).populate("user", [
+      "username",
+      "id"
+    ]);
+
+    if (!poll) throw new Error("No poll found");
+
+    return res.status(200).json(poll);
+  } catch (err) {
+    err.status = 400;
+    next(err);
+  }
+};

@@ -10,10 +10,10 @@ router
 
 router.get("/user", auth, handle.usersPolls);
 
-// router
-//   .route("/:id")
-//   .get()
-//   .post()
-//   .delete();
+router
+  .route("/:id")
+  .get(handle.getPoll)
+  .post()
+  .delete();
 
 module.exports = router;
