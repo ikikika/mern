@@ -15,4 +15,4 @@ export const call = async (method, path, data) => {
   return response.data;
 };
 
-export default { call };
+export default { setToken, call };
