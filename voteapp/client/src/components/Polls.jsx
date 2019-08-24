@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-import { getPolls, getUserPolls } from "../store/actions";
+import { getPolls, getUserPolls, getCurrentPoll } from "../store/actions";
 
 class Polls extends Component {
   constructor(props) {
@@ -13,8 +13,17 @@ class Polls extends Component {
     getPolls();
   }
 
+  handleSelect(id) {
+    const { getCurrentPoll } = this.props;
+    getCurrentPoll(id);
+  }
+
   render() {
-    const polls = this.props.polls.map(poll => <li>{poll.question}</li>);
+    const polls = this.props.polls.map(poll => (
+      <li key={poll._id} onClick={() => this.handleSelect(poll._id)}>
+        {poll.question}
+      </li>
+    ));
     return (
       <Fragment>
         <ul>{polls}</ul>
@@ -28,7 +37,7 @@ const mapStateToProps = store => ({
   polls: store.polls
 });
 
-const mapActionsToProps = { getPolls, getUserPolls };
+const mapActionsToProps = { getPolls, getUserPolls, getCurrentPoll };
 
 export default connect(
   mapStateToProps,
