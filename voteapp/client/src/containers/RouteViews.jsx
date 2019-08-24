@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Switch, Route, withRouter } from "react-router-dom";
 
 import AuthPage from "../pages/AuthPage";
+import TestPage from "../pages/TestPage";
 
 const RouteViews = ({ auth }) => (
   <main>
@@ -23,6 +24,8 @@ const RouteViews = ({ auth }) => (
           />
         )}
       />
+
+      <Route exact path="/test" render={() => <TestPage />} />
     </Switch>
   </main>
 );
