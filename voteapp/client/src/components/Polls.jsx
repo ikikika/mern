@@ -6,6 +6,8 @@ import { getPolls, getUserPolls, getCurrentPoll } from "../store/actions";
 class Polls extends Component {
   constructor(props) {
     super(props);
+
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount() {
