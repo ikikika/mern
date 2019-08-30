@@ -4,10 +4,12 @@ import { Switch, Route, withRouter } from "react-router-dom";
 
 import AuthPage from "../pages/AuthPage";
 import TestPage from "../pages/TestPage";
+import Homepage from "../pages/Homepage";
 
 const RouteViews = ({ auth }) => (
   <main>
     <Switch>
+      <Route exact path="/" render={() => <Homepage />} />
       <Route
         exact
         path="/login"
