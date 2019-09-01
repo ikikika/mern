@@ -25,31 +25,30 @@ const Poll = ({ poll, vote }) => {
       </button>
     ));
 
-  const data = {
-    labels: poll.options.map(option => option.option),
-    datasets: [
-      {
-        label: poll.question,
-        backgroundColor: poll.options.map(option => color()),
-        borderColor: "#323643",
-        data: poll.options.map(option => option.votes)
-      }
-    ]
-  };
+  //   const data = {
+  //     labels: poll.options.map(option => option.option),
+  //     datasets: [
+  //       {
+  //         label: poll.question,
+  //         backgroundColor: poll.options.map(option => color()),
+  //         borderColor: "#323643",
+  //         data: poll.options.map(option => option.votes)
+  //       }
+  //     ]
+  //   };
 
   return (
     <div>
       <h3>{poll.question}</h3>
       <div>{answers}</div>
-      <Pie data={data} />
+      {/* <Pie data={data} /> */}
     </div>
   );
 };
 
 const mapStateToProps = store => ({ poll: store.currentPoll });
 
-const mapActionsToProps = { vote };
 export default connect(
   mapStateToProps,
-  mapActionsToProps
+  { vote }
 )(Poll);

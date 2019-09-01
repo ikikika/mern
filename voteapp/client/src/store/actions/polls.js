@@ -57,10 +57,10 @@ export const getCurrentPoll = path => {
     try {
       const poll = await api.call("get", `polls/${path}`);
       dispatch(setCurrentPoll(poll));
-      dispatch(removeError);
+      dispatch(removeError());
     } catch (err) {
-      const error = err.response.data;
-      dispatch(addError(error.message));
+      const { error } = err.response.data;
+      dispatch(addError(error));
     }
   };
 };
