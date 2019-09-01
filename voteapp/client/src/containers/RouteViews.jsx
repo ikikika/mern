@@ -8,6 +8,7 @@ import AuthPage from "../pages/AuthPage";
 import TestPage from "../pages/TestPage";
 import Homepage from "../pages/Homepage";
 import PollPage from "../pages/PollPage";
+import CreatePollPage from "../pages/CreatePollPage";
 
 const RouteViews = ({ auth, getCurrentPoll }) => (
   <main>
@@ -28,6 +29,11 @@ const RouteViews = ({ auth, getCurrentPoll }) => (
             isAuthenticated={auth.isAuthenticated}
           />
         )}
+      />
+      <Route
+        exact
+        path="/poll/new"
+        render={() => <CreatePollPage isAuthenticated={auth.isAuthenticated} />}
       />
       <Route
         exact
