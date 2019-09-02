@@ -9,6 +9,7 @@ import TestPage from "../pages/TestPage";
 import Homepage from "../pages/Homepage";
 import PollPage from "../pages/PollPage";
 import CreatePollPage from "../pages/CreatePollPage";
+import Posts from "../components/Posts";
 
 const RouteViews = ({ auth, getCurrentPoll }) => (
   <main>
@@ -42,6 +43,8 @@ const RouteViews = ({ auth, getCurrentPoll }) => (
           <PollPage getPoll={id => getCurrentPoll(id)} {...props} />
         )}
       />
+      <Route exact path="/posts" render={() => <Posts />} />
+
       <Route exact path="/test" render={() => <TestPage />} />
     </Switch>
   </main>
