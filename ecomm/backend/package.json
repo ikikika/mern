@@ -8,11 +8,14 @@
     "start": "node server",
     "server": "nodemon server",
     "client": "npm start --prefix F:/projects/mern/ecomm/frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node data/seeder",
+    "data:destroy": "node data/seeder -d"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.3"
