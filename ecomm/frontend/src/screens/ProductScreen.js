@@ -25,7 +25,7 @@ const ProductScreen = ({ history, match }) => {
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.is}?qty=${qty}`);
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
   const productDetails = useSelector((state) => state.productDetails);
